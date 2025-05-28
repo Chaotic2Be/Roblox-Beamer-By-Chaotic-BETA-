@@ -1,1 +1,4 @@
-# Test
+# Made by Chaotic2Be
+
+this file is still being worked on and fixed, expect glitches and code errors.
+comment any errors and ill look into it.
